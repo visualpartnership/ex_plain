@@ -15,6 +15,35 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      SHORT_SHA: ${{ steps.short-sha.outputs.short_sha }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup BEAM
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: 1.16.0-otp-26
+          otp-version: 26.2.1
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            _build
+            deps
+          key: |
+            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-${{ hashFiles('yarn.lock') }}-2023-03-09
+          restore-keys: |
+            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-${{ hashFiles('yarn.lock') }}-2023-03-09
+
+      - name: Install Elixir dependencies
+        run: mix do deps.get, compile --warnings-as-errors
+
   test:
     name: Test
     needs: setup
