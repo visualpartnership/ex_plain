@@ -1,4 +1,5 @@
 # ExPlain
+![](	https://img.shields.io/badge/Elixir-4B275F?style=for-the-badge&logo=elixir&logoColor=white)
 ![](https://github.com/visualpartnership/ex_plain/actions/workflows/ci.yml/badge.svg)
 
 `ex_plain` is a developer tool to create diagrams using D2 to explain Elixir code and help you to understand your code project.
