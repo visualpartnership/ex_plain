@@ -10,10 +10,6 @@ on:
 env:
   MIX_ENV: test
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
-
 jobs:
   setup:
     name: Setup
@@ -37,9 +33,9 @@ jobs:
             _build
             deps
           key: |
-            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-${{ hashFiles('yarn.lock') }}-2023-03-09
+            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-2024-19-04
           restore-keys: |
-            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-${{ hashFiles('yarn.lock') }}-2023-03-09
+            explain-versions-${{ hashFiles('.tool-versions') }}-${{ hashFiles('mix.lock') }}-2024-19-04
 
       - name: Install Elixir dependencies
         run: mix do deps.get, compile --warnings-as-errors
