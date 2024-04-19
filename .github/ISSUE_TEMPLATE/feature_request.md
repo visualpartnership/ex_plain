@@ -2,16 +2,12 @@
 name: Feature request
 about: Suggest an issue for this project
 title: ''
-labels: ''
+labels: TO DO
 assignees: ''
 
 ---
 
-<div style="width: 100%;">
-  <img src="https://raw.githubusercontent.com/carlogilmar/svg-examples/main/explain.svg" style="width: 100%;" alt="Click to see the source">
-</div>
-
-# ex_plain my elixir code
+# ex_plain
 
 ## 🏆 Why we need this feature?
 
@@ -24,3 +20,5 @@ assignees: ''
 ## 📍Notes and comments
 
 `TBD`
+
+<img src="https://raw.githubusercontent.com/carlogilmar/svg-examples/main/vp.svg" style="width: 50%;" alt="Click to see the source">
