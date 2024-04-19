@@ -1,6 +1,7 @@
 # ExPlain
+![](https://github.com/visualpartnership/ex_plain/actions/workflows/ci.yml/badge.svg)
 
-**TODO: Add description**
+`ex_plain` is a developer tool to create diagrams using D2 to explain Elixir code and help you to understand your code project.
 
 ## Installation
 
