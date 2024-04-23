@@ -1,5 +1,8 @@
 defmodule ExPlain.D2.Backbone do
-  def create_diagram(%{
+  alias ExPlain.Reader.ModuleUnit
+
+  @spec create_diagram(ModuleUnit.t()) :: String.t()
+  def create_diagram(%ModuleUnit{
         name: module_name,
         public_functions: public_functions,
         private_functions: private_functions

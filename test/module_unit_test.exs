@@ -1,6 +1,6 @@
-defmodule ExPlainTest do
+defmodule ExPlain.Reader.ModuleUnitTest do
   use ExUnit.Case
-  alias ExPlain.ModuleUnit
+  alias ExPlain.Reader.ModuleUnit
 
   test "create a module unit struct" do
     assert %ModuleUnit{name: "MyModule"} = ModuleUnit.new("MyModule")
