@@ -1,4 +1,7 @@
 defmodule ExPlain.D2.Backbone do
+  @moduledoc """
+  Module to create backbone diagram
+  """
   alias ExPlain.Reader.ModuleUnit
 
   @spec create_diagram(ModuleUnit.t()) :: String.t()
