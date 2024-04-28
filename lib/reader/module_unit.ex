@@ -1,5 +1,5 @@
 defmodule ExPlain.Reader.ModuleUnit do
-  @doc """
+  @moduledoc """
   Struct for module unit
   """
   @type t() :: %__MODULE__{}
