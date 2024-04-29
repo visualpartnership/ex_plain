@@ -2,45 +2,21 @@
 
 ```elixir
 Mix.install([
-  {:kino, "~> 0.12.0"}
+  {:kino, "~> 0.12.0"},
+  {:ex_plain, path: "/Users/carlogilmar/Code/GitHub/ex_plain"}
 ])
 ```
 
 ## Execute code from other Node
 
-### Instructions
-
-1. Open a Node session in your application `iex --sname ex_plain --cookie secret -S mix`
-2. Open a new Notebook
-3. Add a `Remote execution` smart cell.
-4. Add the node and the cookie choosen, in this cell you can execute your code.
-5. You can assign the data in the `assign to` input. So in this way you can work with that data.
-6. You can continue using the livebook implementations with your data.
-
-<!-- livebook:{"attrs":"eyJhc3NpZ25fdG8iOiJkMl9kaWFncmFtIiwiY29kZSI6Im1vZHVsZSA9IFxuICAlRXhQbGFpbi5SZWFkZXIuTW9kdWxlVW5pdHtcbiAgICBuYW1lOiBcIlVzZXJzQ29udGV4dFwiLCBcbiAgICBwdWJsaWNfZnVuY3Rpb25zOiBbXCJjcmVhdGVfdXNlci8xXCJdLCBcbiAgICBwcml2YXRlX2Z1bmN0aW9uczogW1widmFsaWRhdGVfY2hhbmdlc2V0LzJcIl1cbiAgfVxuXG5kMl9kaWFncmFtID0gRXhQbGFpbi5EMi5CYWNrYm9uZS5jcmVhdGVfZGlhZ3JhbShtb2R1bGUpICIsImNvb2tpZSI6IiIsImNvb2tpZV9zZWNyZXQiOiJDT09LSUUiLCJub2RlIjoiZXhfcGxhaW5ATWFjQm9vay1Qcm8tZGUtQ2FybG8tR2lsbWFyIiwibm9kZV9zZWNyZXQiOiIiLCJub2RlX3NlY3JldF92YWx1ZSI6bnVsbCwidXNlX2Nvb2tpZV9zZWNyZXQiOnRydWUsInVzZV9ub2RlX3NlY3JldCI6ZmFsc2V9","chunks":null,"kind":"Elixir.Kino.RemoteExecutionCell","livebook_object":"smart_cell"} -->
-
 ```elixir
-require Kino.RPC
-node = :"ex_plain@MacBook-Pro-de-Carlo-Gilmar"
-Node.set_cookie(node, String.to_atom(System.fetch_env!("LB_COOKIE")))
+module = %ExPlain.Reader.ModuleUnit{
+  name: "UsersContext",
+  public_functions: ["create_user/1"],
+  private_functions: ["validate_changeset/2"]
+}
 
-d2_diagram =
-  Kino.RPC.eval_string(
-    node,
-    ~S"""
-    module = 
-      %ExPlain.Reader.ModuleUnit{
-        name: "UsersContext", 
-        public_functions: ["create_user/1"], 
-        private_functions: ["validate_changeset/2"]
-      }
+d2_diagram = ExPlain.D2.Backbone.create_diagram(module)
 
-    d2_diagram = ExPlain.D2.Backbone.create_diagram(module) 
-    """,
-    file: __ENV__.file
-  )
-```
-
-```elixir
 IO.write(d2_diagram)
 ```
